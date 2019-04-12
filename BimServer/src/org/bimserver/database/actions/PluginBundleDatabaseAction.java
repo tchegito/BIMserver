@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
 
 public abstract class PluginBundleDatabaseAction<T> extends BimDatabaseAction<T>{
 	private static final Logger LOGGER = LoggerFactory.getLogger(PluginBundleDatabaseAction.class);
-	private static final int DEFAULT_MATCHING_PLUGINS = 3;
+	private static final int DEFAULT_MATCHING_PLUGINS = 55555;
 	
 	public PluginBundleDatabaseAction(DatabaseSession databaseSession, AccessMethod accessMethod) {
 		super(databaseSession, accessMethod);
