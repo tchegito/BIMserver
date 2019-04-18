@@ -1210,6 +1210,22 @@ public class ServiceImpl extends GenericServiceImpl implements ServiceInterface 
 	}
 
 	@Override
+	public Long checkinAsyncLocal(final Long poid, final String comment, Long deserializerOid, String fileFullPath, Boolean merge) throws ServerException, UserException {
+		try {
+			java.io.File file = new java.io.File(fileFullPath);
+			if (file.exists()) {
+				long size = file.length();
+				DataHandler dh = new DataHandler(file.toURI().toURL());
+				return checkinAsync(poid, comment, deserializerOid, size, fileFullPath, dh, merge);
+			} else {
+				throw new UserException("File doesn't exists on server !");
+			}
+		} catch (MalformedURLException e) {
+			throw new UserException("Path name is inconsistent !");
+		}
+	}
+	
+	@Override
 	public Long checkinAsync(final Long poid, final String comment, Long deserializerOid, Long fileSize, String fileName, DataHandler dataHandler, Boolean merge) throws ServerException, UserException {
 		Long topicId = initiateCheckin(poid, deserializerOid);
 		checkinInitiatedAsync(topicId, poid, comment, deserializerOid, fileSize, fileName, dataHandler, merge);

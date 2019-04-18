@@ -452,6 +452,17 @@ public interface ServiceInterface extends PublicInterface {
 		@WebParam(name = "data", partName = "checkin.data") @XmlMimeType("application/octet-stream") DataHandler data,
 		@WebParam(name = "merge", partName = "checkin.merge") Boolean merge) throws ServerException, UserException;
 
+	@WebMethod(action = "checkinAsyncLocal")
+	public Long checkinAsyncLocal(
+			@WebParam(name = "poid", partName = "checkin.poid") Long poid,
+			@WebParam(name = "comment", partName = "checkin.comment") String comment,
+			@WebParam(name = "deserializerOid", partName = "checkin.deserializerOid") Long deserializerOid,
+			@WebParam(name = "fileFullPath", partName = "checkin.fileName") String fileFullPath,
+			@WebParam(name = "merge", partName = "checkin.merge") Boolean merge) throws ServerException, UserException;			
+
+	//final Long poid, final String comment, Long deserializerOid, Long fileSize, String fileFullPath, DataHandler dataHandler, Boolean merge) throws ServerException, UserException;
+	
+
 	@WebMethod(action = "checkinAsync")
 	Long checkinAsync(
 		@WebParam(name = "poid", partName = "checkin.poid") Long poid,

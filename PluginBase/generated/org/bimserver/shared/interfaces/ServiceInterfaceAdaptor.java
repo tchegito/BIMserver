@@ -588,5 +588,11 @@ public class ServiceInterfaceAdaptor implements org.bimserver.shared.interfaces.
 	
 	public void validateModelChecker(java.lang.Long oid) throws UserException, ServerException {
 	}
+
+	@Override
+	public Long checkinAsyncLocal(Long poid, String comment, Long deserializerOid, String fileFullPath, Boolean merge)
+			throws ServerException, UserException {
+		return null;
+	}
 	
 }
